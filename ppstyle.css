@@ -133,6 +133,7 @@ html,body{
         .profile-link{
           display: inline-block;
           margin: 0 100px;
+          padding-top: 25px;
         }
 
         .profile-link img{
