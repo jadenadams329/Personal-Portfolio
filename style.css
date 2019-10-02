@@ -126,21 +126,16 @@ html,body{
           color: #EDF5E1;
           margin-bottom: 10px;
         }
-
-        .contact-links img{
-          display: inline-block;
-          height: 50px;
-          padding-top: 25px
-        }
-
-        #profile-link{
+        .contact-links{
           text-align: center;
-        }
-
-        .contact-links a{
-          margin:0 100px 0 440px;
           
         }
+        #profile-link img{
+          width: 50px;
+          display: inline-flex;
+        }
+
+       
 
       
   
