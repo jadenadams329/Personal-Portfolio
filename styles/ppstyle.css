@@ -49,11 +49,14 @@ html,body{
           padding:36vh 0 0 0;
           font-size:48pt;
           letter-spacing: .21em;
+          animation: 	bounceInDown 2s;
+
         }
         #welcome-section >p{
           margin:.4em 0 0 0;
           font-size:14pt;
           letter-spacing:.3em;
+          animation: 	bounceInUp 2s;
         }
       #projects{
         margin:0px auto;
