@@ -1,0 +1,29 @@
+html,body{
+    background-color: #5CDB95;
+    color: #EDF5E1
+}
+header{
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+main{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 2em;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    margin-bottom: 6rem;
+    margin-top: 3rem;
+
+}
+
+button {
+    font-size: 1.5rem;
+    padding: 20px;
+    border-radius: 10% / 50%;
+    background-color: #05386B;
+    color: white;
+}
