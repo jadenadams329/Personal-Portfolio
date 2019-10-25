@@ -1,4 +1,3 @@
-import { films } from '../assets/films.js'
 import { people } from '../assets/people.js'
 
 let mainArea = document.querySelector('main');
