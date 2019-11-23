@@ -11,64 +11,83 @@ async function getAPIData(url) {
     }
 }
 //now use the returned async data
-const theData = getAPIData('https://www.balldontlie.io/api/v1/teams')
-.then(data => {
-    for (const team of data.data) {
-        populateDOM(team)
-    }
+let allTeams = []
+const theData = getAPIData('https://www.balldontlie.io/api/v1/teams').then(data => {
+    allTeams = data.data
+    /* makeSimpleMap(allTeams) */
+    populateDOM(allTeams)
 })
 
-let mainArea = document.querySelector('main')
-function populateDOM(team) {
+/* function makeSimpleMap(allOfThem){
+    let results = allOfThem.map(team =>{
+        return{
+            id: team.id,
+            abbreviation: team.abbreviation,
+            city: team.city,
+            conference: team.conference,
+            division: team.division,
+            full_name: team.full_name,
+            name: team.name
+        }
+    })
+} */
 
-        let teamScene = document.createElement('div')
-        let teamCard = document.createElement('div')    
-        let teamFront = document.createElement('div')
-        let teamBack = document.createElement('div')
-        let name = document.createElement('h1')
-        let conference = document.createElement('p')
-        let division = document.createElement('p')
-        let pic = document.createElement('img')
+const container = document.querySelector('.container')
 
-        fillCardBack(teamBack, team)
+function populateDOM(team_array) {
+    team_array.forEach(team => {
+        let card = document.createElement('div')
+        card.setAttribute('class', 'card')
+        let cardImage = document.createElement('div')
+        cardImage.setAttribute('class', 'card-image')
+        let figure = document.createElement('figure')
+        figure.setAttribute('class', 'image')
+        let figureImage = document.createElement('img')
+        figureImage.src = `../images/${team.id}.png`
+        figureImage.alt = 'Placeholder image'
 
-        teamScene.setAttribute('class', 'scene')
-        teamCard.setAttribute('class', 'card')
-        teamFront.setAttribute('class', 'card__face card__face--front')
-        teamBack.setAttribute('class', 'card__face card__face--back')
-        pic.setAttribute('class', 'picDivs')
-
-
-        name.textContent = team.full_name
-        pic.src = `../images/${team.id}.png`
-        conference.textContent = team.conference
-        division.textContent = team.division
-
-        teamFront.appendChild(pic)  
-        teamFront.appendChild(name)
-        
-        teamCard.appendChild(teamFront)
-        teamCard.appendChild(teamBack)
-        teamScene.appendChild(teamCard)
-
-        mainArea.appendChild(teamScene)
-
-        teamCard.addEventListener( 'click', function() {
-            teamCard.classList.toggle('is-flipped');
-          });
-    
+        figure.appendChild(figureImage)
+        cardImage.appendChild(figure)
+        card.appendChild(cardImage)
+        card.appendChild(cardContent(team))
+        container.appendChild(card)
+    })
 }
-function fillCardBack(teamBack, data){
-    let teamAbbreviation = document.createElement('p')
-    teamAbbreviation.textContent = `Abbreviation: ${data.abbreviation}`
-    teamBack.appendChild(teamAbbreviation)
 
-    let conference = document.createElement('p')
-    conference.textContent = `Conference: ${data.conference}`
-    teamBack.appendChild(conference)
+function cardContent(team) {
 
-    let division = document.createElement('p')
-    division.textContent = `Division: ${data.division}`
-    teamBack.appendChild(division)
+    let cardContent = document.createElement('div')
+    cardContent.setAttribute('class', 'card-content')
+    let media = document.createElement('div')
+    media.setAttribute('class', 'media')
+    let mediaLeft = document.createElement('div')
+    mediaLeft.setAttribute('class', 'media-left')
+    let figure = document.createElement('figure')
+    figure.setAttribute('class', 'image is-48x48')
+    let img = document.createElement('img')
+    if (team.conference === 'West') {
+        img.src = `../images/western.png`
+    } else {
+        img.src = `../images/eastern.png`
+    }
+    img.alt = 'Placeholder image'
+    let mediaContent = document.createElement('div')
+    mediaContent.setAttribute('class', 'media-content')
+    let titleP = document.createElement('p')
+    titleP.setAttribute('class', 'title is-4')
+    titleP.textContent = team.full_name
+    let subTitleP = document.createElement('p')
+    subTitleP.setAttribute('class', 'subtitle is-6')
+    subTitleP.textContent = team.abbreviation
+
+    mediaContent.appendChild(titleP)
+    mediaContent.appendChild(subTitleP)
+    figure.appendChild(img)
+    mediaLeft.appendChild(figure)
+    media.appendChild(mediaLeft)
+    media.appendChild(mediaContent)
+    cardContent.appendChild(media)
+
+    return cardContent
 }
 
