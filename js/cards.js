@@ -1,5 +1,5 @@
 
-
+//team class
 class Team {
     constructor(id, abbreviation, conference, division, full_name) {
         this.id = id
@@ -10,7 +10,7 @@ class Team {
     }
 }
 
-
+//allows user to create new team based on their answers
 const newButton = document.querySelector('#newTeam')
 newButton.addEventListener('click', function(){
     let newAbbreviation = prompt("Please enter the Abbreviation of your new team: ")
@@ -21,6 +21,7 @@ newButton.addEventListener('click', function(){
     populateDOM(newTeam)
 })
 
+//grabbing data from API
 async function getAPIData(url) {
 
     try {
@@ -41,6 +42,7 @@ const theData = getAPIData('https://www.balldontlie.io/api/v1/teams')
     })
 
 let mainArea = document.querySelector('main')
+//populating the card with teams data
 function populateDOM(team) {
 
     let teamScene = document.createElement('div')
@@ -80,6 +82,7 @@ function populateDOM(team) {
     });
 
 }
+//populating the back of the card with more data
 function fillCardBack(teamBack, data) {
     let teamAbbreviation = document.createElement('p')
     teamAbbreviation.textContent = `Abbreviation: ${data.abbreviation}`

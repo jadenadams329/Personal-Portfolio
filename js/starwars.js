@@ -2,7 +2,7 @@ import { people } from '../assets/people.js'
 
 let mainArea = document.querySelector('main');
 
-
+//setting up each person, adding info from data
 people.forEach((person) => {
     let personDiv = document.createElement('div')
     let name = document.createElement('h1')
@@ -23,7 +23,7 @@ people.forEach((person) => {
 
     mainArea.appendChild(personDiv)
 });
-
+//grabs the character ID
 function getCharNumber(charURL) {
     let end = charURL.lastIndexOf('/')
     let charID = charURL.substring(end - 2, end)
@@ -37,6 +37,7 @@ function getCharNumber(charURL) {
 const allDivs = Array.from(document.querySelectorAll('div'))
 
 const mainHeader = document.querySelector('header')
+//making male characters bounce on page
 let maleButton = document.createElement('button')
 maleButton.textContent = 'Male Characters'
 maleButton.addEventListener('click', () => {
@@ -48,6 +49,7 @@ maleButton.addEventListener('click', () => {
         matchedDiv.className = 'animated infinite bounce delay-2s'
     })
 });
+//making female characters bounce on page
 let femaleButton = document.createElement('button')
 femaleButton.textContent = 'Female Characters'
 femaleButton.addEventListener('click', () => {
@@ -59,7 +61,7 @@ femaleButton.addEventListener('click', () => {
         matchedDiv.className = 'animated infinite bounce delay-2s;'
     })
 });
-
+//making non gender characters bounce on page
 let otherButton = document.createElement('button')
 otherButton.textContent = 'Non-Gender Characters'
 otherButton.addEventListener('click', () => {
@@ -76,7 +78,7 @@ mainHeader.appendChild(maleButton)
 mainHeader.appendChild(femaleButton)
 mainHeader.appendChild(otherButton)
 
-
+//filters
 const maleCharacters = people.filter(person => person.gender === 'male')
 const femaleCharacters = people.filter(person => person.gender === 'female')
 const otherCharacters = people.filter(person => person.gender !== 'female' && person.gender !== 'male')
