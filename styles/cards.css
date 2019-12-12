@@ -35,6 +35,7 @@ main{
     transform-style: preserve-3d;
     cursor: pointer;
     position: relative;
+    box-shadow: 0 0 10px white;
   }
 
   .card.is-flipped {
