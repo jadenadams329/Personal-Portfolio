@@ -36,6 +36,7 @@ main{
     cursor: pointer;
     position: relative;
     box-shadow: 0 0 10px white;
+    
   }
 
   .card.is-flipped {

@@ -1,5 +1,5 @@
 html,body{
-    background-color: #5CDB95;
+    background-color: black;
     color: #EDF5E1
 }
 header{
@@ -24,6 +24,15 @@ button {
     font-size: 1.5rem;
     padding: 20px;
     border-radius: 10% / 50%;
-    background-color: #05386B;
-    color: white;
+    background-color: yellow;
+    color: black;
+}
+img.logo{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+img.picDivs{
+    width: 75%;
 }
