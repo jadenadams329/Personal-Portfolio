@@ -147,5 +147,5 @@ mainHeader.appendChild(filmsButton)
 //filters
 const maleCharacters = people.filter(person => person.gender !== 'male')
 const femaleCharacters = people.filter(person => person.gender !== 'female')
-const otherCharacters = people.filter(person => person.gender !== 'female' && person.gender !== 'male')
+const otherCharacters = people.filter(person => person.gender === 'female' && person.gender === 'male')
 
